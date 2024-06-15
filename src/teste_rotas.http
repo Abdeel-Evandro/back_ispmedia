@@ -1,0 +1,287 @@
+POST http://localhost:3000/users
+Content-Type: application/json
+ 
+{ 
+    "username": "ceejay",
+    "nome": "Candido",
+    "email": "ceejay@gmail.com",
+    "password": "teste"
+}
+ 
+###
+ 
+POST http://localhost:3000/users/login
+Content-Type: application/json
+ 
+{
+    "username": "evandro",
+    "password": "november6ix!"
+}
+
+### 
+GET http://localhost:3000/users
+
+###
+ 
+GET http://localhost:3000/users/nome/m
+
+###
+PUT http://localhost:3000/users/1
+Content-Type: application/json 
+ 
+{
+    "editor": "true"
+}
+
+###
+
+DELETE http://localhost:3000/users/9
+
+###
+DELETE http://localhost:3000/users/11
+
+### 
+//----------------------------------------------------------------
+
+//generos requests
+POST http://localhost:3000/generos
+Content-Type: application/json
+ 
+{
+    "nome": "R&B"
+}
+
+###
+GET http://localhost:3000/generos
+
+###
+GET http://localhost:3000/generos/1
+
+###
+GET http://localhost:3000/generos/nome/jazz
+
+###
+PUT http://localhost:3000/generos/1
+Content-Type: application/json 
+ 
+{
+    "nome": "R&B"
+}
+
+###
+DELETE http://localhost:3000/generos/1
+
+###
+//----------------------------------------------------------------
+
+//Artista requests
+POST http://localhost:3000/artistas
+Content-Type: application/json
+ 
+{
+    "nome": "6lack"
+}
+
+###
+GET http://localhost:3000/artistas
+
+###
+DELETE http://localhost:3000/artistas/6
+
+###
+GET http://localhost:3000/artistas/nome/B
+
+###
+PUT http://localhost:3000/artistas/7
+Content-Type: application/json 
+ 
+{
+    "nome": "Bruno King"
+}
+
+###
+DELETE http://localhost:3000/generos/1
+
+###
+//----------------------------------------------------------------
+
+//Album requests
+POST http://localhost:3000/albuns
+Content-Type: application/json
+ 
+{
+    "nome": "Art & History",
+    "artistaId": 1
+}
+
+### 
+GET http://localhost:3000/albuns
+
+### 
+GET http://localhost:3000/albuns/1
+
+###
+GET http://localhost:3000/albuns/nome/d
+
+###
+PUT http://localhost:3000/albuns/1
+Content-Type: application/json 
+ 
+{
+    "imageId": 1
+}
+
+###
+DELETE http://localhost:3000/albuns/1
+
+###
+//----------------------------------------------------------------
+
+// Musics requests
+POST http://localhost:3000/musics
+Content-Type: multipart/form-data
+ 
+{
+    "userId": 1,
+    "titulo": "Puro",
+    "generoId": 1,
+    "artistaId": 1,
+    "url": 
+}
+
+### 
+GET http://localhost:3000/musics/genero/rap
+
+### 
+GET http://localhost:3000/musics/1
+
+###
+GET http://localhost:3000/musics/title/d
+
+###
+PUT http://localhost:3000/musics/1
+Content-Type: application/json 
+ 
+{
+    "nome": "Desconhecido"
+}
+
+###
+DELETE http://localhost:3000/musics/1
+
+###
+GET http://localhost:3000/upload/image/Maria/1716421408168-alhilal-logo
+
+###
+GET http://localhost:3000/images
+###
+GET http://localhost:3000/images/user/1
+
+###
+DELETE http://localhost:3000/videos/1
+
+###
+GET http://localhost:3000/upload/image/:username/:filename
+###
+GET http://localhost:3000/download/silva/images/1717109105289-ANNA_JOYCE_755x470.jpg
+###
+// Criticas
+POST http://localhost:3000/criticas/album
+Content-Type: application/json 
+ 
+{
+    "comentario": "GOAT!",
+    "userId": 3,
+    "albumId": 3,
+    "pontuacao": 5
+}
+
+###
+GET http://localhost:3000/criticas/album
+###
+PUT http://localhost:3000/criticas/album/2
+Content-Type: application/json 
+ 
+{
+    "comentario": "esperava mais da mother!",
+    "pontuacao": 3
+}
+###
+DELETE http://localhost:3000/criticas/album/3
+###
+DELETE http://localhost:3000/criticas/user/1
+
+###
+// PlayList Testes
+//Criar
+POST http://localhost:3000/playlists
+Content-Type: application/json
+
+{
+    "nome": "Classic",
+    "userId": 1
+}
+
+###
+// Adicionar musica
+POST http://localhost:3000/playlists/1/musics
+Content-Type: application/json
+
+{
+    "playlistId": 1,
+    "musicId": 1
+}
+
+###
+// Listar musicas da playlist
+GET http://localhost:3000/playlists/1/musics
+
+###
+// limpar playlist
+DELETE http://localhost:3000/playlists/1/musics
+
+###
+// eliminar playlist
+DELETE http://localhost:3000/playlists/1
+
+###
+// partilha de ficheiros
+POST http://localhost:3000/share
+Content-Type: application/json
+
+{
+    "mediaType": "music",
+    "mediaId": 1,
+    "userDest": 2,
+    "userOwner": 1
+}
+
+###
+GET http://localhost:3000/shared/musics/2
+
+###
+//Grupos
+POST http://localhost:3000/grupo
+Content-Type: application/json
+
+{
+    "userOwner": 1,
+    "nomeGrupo": "Al Hilal"
+}
+###
+GET http://localhost:3000/grupo/1
+
+###
+POST http://localhost:3000/grupo/1/2
+
+###
+POST http://localhost:3000/grupo/pedido/1/3
+
+###
+PUT http://localhost:3000/grupo/1/3
+
+###
+DELETE http://localhost:3000/grupo/1
+
+###
+PUT http://localhost:3000/grupo/1/2/owner
