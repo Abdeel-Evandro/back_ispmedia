@@ -86,6 +86,7 @@ function getContentType2(filename) {
 }
 
 // Reprodução via Streaming
+/*
 export async function getVideo(req, reply) {
   const username = req.params.username;
   const filename = req.params.filename;
@@ -133,6 +134,31 @@ export async function getVideo(req, reply) {
     reply.status(500).send({ error: 'An error occurred while retrieving the video' });
   }
 }
+*/
+
+export async function getVideo(req, reply) {
+  const username = req.params.username;
+  const filename = req.params.filename;
+  const filePath = path.resolve('content', 'users', username, 'videos', filename);
+
+  // Verificar se o arquivo existe
+  if (!fs.existsSync(filePath)) {
+    reply.status(404).send({ error: 'File not found' });
+    return;
+  }
+
+  // Ler o conteúdo do arquivo
+  const fileContent = fs.readFileSync(filePath);
+
+  // Definir o tipo de conteúdo -> Função para detectar o tipo de ficheiro (extensao)
+  reply.header('Content-Type', getContentType(filename));
+
+  // Enviar o conteúdo do video
+  reply.send(fileContent);
+  // Retorna o caminho
+  //reply.status(200).send(filePath);
+}
+
 
 export async function getMusic(req, reply) {
   const username = req.params.username;
