@@ -28,4 +28,21 @@ export default async function grupoRoutes(fastify, options) {
 
     // Rota para eliminar um grupo
     fastify.delete('/grupo/:grupoId', grupoController.apagarGrupo);
+
+    // new routes
+
+    // Rota para partilhar um ficheiro com o grupo
+    fastify.post('/group/share', grupoController.partilharFicheiro);
+
+    // Rota para obter todas as musicas
+    fastify.get('/group/shared/musics/:grupoId', grupoController.getSharedMusics);
+
+    // Rota para obter todas as imagens
+    fastify.get('/group/shared/images/:grupoId', grupoController.getSharedImages);
+
+    // Rota para obter todos os videos
+    fastify.get('/group/shared/videos/:grupoId', grupoController.getSharedVideos);
+
+    // Rota para desfazer uma partilha
+    fastify.delete('/group/remove/:mediaType/:mediaId/:grupoId', grupoController.desfazerPartilha);
 }

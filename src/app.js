@@ -42,7 +42,7 @@ const server = fastify();
 // Registra as rotas criadas
 server.register(fastifyCors, {
     origin: '*',
-    methods: ['GET', 'POST','PUT', 'DELETE']
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
 });
 server.register(fastifyMultipart);
 server.register(userRoutes);

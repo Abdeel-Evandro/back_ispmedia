@@ -8,6 +8,12 @@ import { getImageById } from './imageServices.js';
 // partilhar ficheiro
 export async function partilharFicheiro(fileData) {
     try {
+        /*fileData
+            Id do userOwner
+            Id do userDestinatario
+            typeOfMidia (music, video, image)
+            Id do midia
+        */
         const sharedFile = await PartilharFicheiro.create(fileData);
         return sharedFile;
     } catch (error) {
@@ -88,13 +94,14 @@ export async function getSharedImages(userId) {
 export async function desfazerPartilha(mediaType, mediaId, userDest) {
     try {
         // eliminar o registo de partilha de ficheiro
-        const res = await PartilharFicheiro.destroy({ 
-            where: { 
+        const res = await PartilharFicheiro.destroy({
+            where: {
                 mediaType,
                 mediaId,
-                userDest 
-            }});
-        if(res > 0){
+                userDest
+            }
+        });
+        if (res > 0) {
             console.log("Partilha desfeita com sucesso");
         }
         return { message: 'Partilha desfeita com sucesso' };
@@ -102,4 +109,3 @@ export async function desfazerPartilha(mediaType, mediaId, userDest) {
         throw new Error(error.message);
     }
 }
-    

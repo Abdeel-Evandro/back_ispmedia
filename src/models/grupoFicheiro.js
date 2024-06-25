@@ -12,13 +12,13 @@ const GrupoFicheiros = sequelize.define('GrupoFicheiros', {
     },
     grupoId: {
         type: DataTypes.INTEGER,
-        references:{
+        references: {
             model: Grupo,
             key: 'id'
         },
         allowNull: false
     },
-    typeOfMedia: {
+    mediaType: {
         type: DataTypes.STRING,
         allowNull: false
     },

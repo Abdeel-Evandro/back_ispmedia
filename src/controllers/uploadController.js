@@ -2,6 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import mime from 'mime-types';
 
+
 // upload de um video
 export async function uploadVideo(req, reply) {
   if (!req.file) {
@@ -19,6 +20,7 @@ export async function uploadVideo(req, reply) {
     mimetype: extensao
   });
 }
+
 
 // upload de uma imagem
 export async function uploadImage(req, reply) {
@@ -86,7 +88,6 @@ function getContentType2(filename) {
 }
 
 // Reprodução via Streaming
-/*
 export async function getVideo(req, reply) {
   const username = req.params.username;
   const filename = req.params.filename;
@@ -134,8 +135,9 @@ export async function getVideo(req, reply) {
     reply.status(500).send({ error: 'An error occurred while retrieving the video' });
   }
 }
-*/
 
+
+/*
 export async function getVideo(req, reply) {
   const username = req.params.username;
   const filename = req.params.filename;
@@ -159,7 +161,7 @@ export async function getVideo(req, reply) {
   //reply.status(200).send(filePath);
 }
 
-
+*/
 export async function getMusic(req, reply) {
   const username = req.params.username;
   const filename = req.params.filename;
@@ -251,7 +253,7 @@ download/username/musics/nome_do_ficheiro
 export async function downloadFile(req, reply) {
   const username = req.params.username;
   // 'images', 'videos' ou 'musics'
-  const fileType = req.params.fileType; 
+  const fileType = req.params.fileType;
   const filename = req.params.filename;
   const filePath = path.resolve('content', 'users', username, fileType, filename);
 

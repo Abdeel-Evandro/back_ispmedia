@@ -54,7 +54,7 @@ export async function desfazerPartilha(req, res) {
         // media id
         const mediaId = req.params.mediaId;
 
-        const result = await artistaService.desfazerPartilha(mediaType, mediaId, userDest);
+        const result = await partilharFicheiroServices.desfazerPartilha(mediaType, mediaId, userDest);
         res.status(200).send(result);
     } catch (error) {
         res.status(404).send({ error: error.message });

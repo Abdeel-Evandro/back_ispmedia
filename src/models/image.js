@@ -2,7 +2,6 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/dbConfig.js';
 import User from './user.js';
-import Album from './album.js';
 
 const Image = sequelize.define('image', {
     id: {
