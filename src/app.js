@@ -1,21 +1,25 @@
 // imports
 // servidores
-import fastify from 'fastify'
+import fastify from 'fastify';
 import fastifyMultipart from '@fastify/multipart';
 import fastifyCors from '@fastify/cors';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 // local database
-import * as database from './config/dbConfig.js'
+import * as database from './config/dbConfig.js';
 
 // importar as models para que sejam actualizadas com o sequelize
-import User from './models/user.js'
-import Album from './models/album.js'
-import Artista from './models/artista.js'
-import Genero from './models/genero.js'
-import Image from './models/image.js'
-import Music from './models/music.js'
-import Video from './models/video.js'
-import Critica from './models/critica.js'
+import User from './models/user.js';
+import Album from './models/album.js';
+import Artista from './models/artista.js';
+import Genero from './models/genero.js';
+import Image from './models/image.js';
+import Music from './models/music.js';
+import Video from './models/video.js';
+import Critica from './models/critica.js';
 import Playlist from './models/playlist.js';
 import PartilharFicheiro from './models/partilharFicheiro.js';
 import Grupo from './models/grupo.js';
@@ -31,18 +35,30 @@ import imageRoutes from './routes/imageRoutes.js';
 import videoRoutes from './routes/videoRoutes.js';
 import musicRoutes from './routes/musicRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
-import criticaRoutes from './routes/criticaRoutes.js'
+import criticaRoutes from './routes/criticaRoutes.js';
 import playlistRoutes from './routes/playlistRoutes.js';
 import partilharFicheiroRoutes from './routes/partilharFicheiroRoutes.js';
 import grupoRoutes from './routes/grupoRoutes.js';
 
+// Get the directory name
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Load SSL certificate and key
+const sslOptions = {
+  key: fs.readFileSync(path.join(__dirname, 'config/server.key')),
+  cert: fs.readFileSync(path.join(__dirname, 'config/certificado.crt'))
+};
+
 // Inicio das operacoes
-const server = fastify();
+const server = fastify({
+  https: sslOptions
+});
 
 // Registra as rotas criadas
 server.register(fastifyCors, {
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE']
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
 });
 server.register(fastifyMultipart);
 server.register(userRoutes);
@@ -60,21 +76,22 @@ server.register(grupoRoutes);
 
 // Inicia o servidor
 const start = async () => {
-    try {
-        // database conexao
-        await database.sequelize.sync();
-        //await database.sequelize.authenticate();
-        console.log('Conexão com o banco de dados estabelecida com sucesso.');
+  try {
+    // database conexao
+    await database.sequelize.sync();
+    // await database.sequelize.authenticate();
+    console.log('Conexão com o banco de dados estabelecida com sucesso.');
 
-        // porta de uso
-        await server.listen({
-            host: '0.0.0.0',
-            port: 3000
-        });
+    // porta de uso
+    await server.listen({
+      host: '0.0.0.0',
+      port: 3000
+    });
 
-    } catch (err) {
-        process.exit(1);
-    }
+  } catch (err) {
+    console.error('Erro ao iniciar o servidor:', err);
+    process.exit(1);
+  }
 };
 
 start();

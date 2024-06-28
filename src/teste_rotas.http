@@ -1,4 +1,4 @@
-POST http://localhost:3000/users
+POST https://localhost:3000/users
 Content-Type: application/json
  
 { 
@@ -10,7 +10,7 @@ Content-Type: application/json
  
 ###
  
-POST http://localhost:3000/users/login
+POST https://localhost:3000/users/login
 Content-Type: application/json
  
 {
@@ -19,14 +19,14 @@ Content-Type: application/json
 }
 
 ### 
-GET http://localhost:3000/users
+GET https://localhost:3000/users
 
 ###
  
-GET http://localhost:3000/users/nome/m
+GET https://localhost:3000/users/nome/m
 
 ###
-PUT http://localhost:3000/users/1
+PUT https://localhost:3000/users/1
 Content-Type: application/json 
  
 {
@@ -35,16 +35,16 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/users/1
+DELETE https://localhost:3000/users/1
 
 ###
-DELETE http://localhost:3000/users/11
+DELETE https://localhost:3000/users/11
 
 ### 
 //----------------------------------------------------------------
 
 //generos requests
-POST http://localhost:3000/generos
+POST https://localhost:3000/generos
 Content-Type: application/json
  
 {
@@ -52,16 +52,16 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/generos
+GET https://localhost:3000/generos
 
 ###
-GET http://localhost:3000/generos/1
+GET https://localhost:3000/generos/1
 
 ###
-GET http://localhost:3000/generos/nome/jazz
+GET https://localhost:3000/generos/nome/jazz
 
 ###
-PUT http://localhost:3000/generos/1
+PUT https://localhost:3000/generos/1
 Content-Type: application/json 
  
 {
@@ -69,13 +69,13 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/generos/1
+DELETE https://localhost:3000/generos/1
 
 ###
 //----------------------------------------------------------------
 
 //Artista requests
-POST http://localhost:3000/artistas
+POST https://localhost:3000/artistas
 Content-Type: application/json
  
 {
@@ -83,16 +83,16 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/artistas
+GET https://localhost:3000/artistas
 
 ###
-DELETE http://localhost:3000/artistas/6
+DELETE https://localhost:3000/artistas/6
 
 ###
-GET http://localhost:3000/artistas/nome/B
+GET https://localhost:3000/artistas/nome/B
 
 ###
-PUT http://localhost:3000/artistas/7
+PUT https://localhost:3000/artistas/7
 Content-Type: application/json 
  
 {
@@ -100,13 +100,13 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/generos/1
+DELETE https://localhost:3000/generos/1
 
 ###
 //----------------------------------------------------------------
 
 //Album requests
-POST http://localhost:3000/albuns
+POST https://localhost:3000/albuns
 Content-Type: application/json
  
 {
@@ -115,16 +115,16 @@ Content-Type: application/json
 }
 
 ### 
-GET http://localhost:3000/albuns
+GET https://localhost:3000/albuns
 
 ### 
-GET http://localhost:3000/albuns/1
+GET https://localhost:3000/albuns/1
 
 ###
-GET http://localhost:3000/albuns/nome/d
+GET https://localhost:3000/albuns/nome/d
 
 ###
-PUT http://localhost:3000/albuns/1
+PUT https://localhost:3000/albuns/1
 Content-Type: application/json 
  
 {
@@ -132,13 +132,13 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/albuns/1
+DELETE https://localhost:3000/albuns/1
 
 ###
 //----------------------------------------------------------------
 
 // Musics requests
-POST http://localhost:3000/musics
+POST https://localhost:3000/musics
 Content-Type: multipart/form-data
  
 {
@@ -150,16 +150,16 @@ Content-Type: multipart/form-data
 }
 
 ### 
-GET http://localhost:3000/musics/genero/rap
+GET https://localhost:3000/musics/genero/rap
 
 ### 
-GET http://localhost:3000/musics/1
+GET https://localhost:3000/musics/1
 
 ###
-GET http://localhost:3000/musics/title/d
+GET https://localhost:3000/musics/title/d
 
 ###
-PUT http://localhost:3000/musics/1
+PUT https://localhost:3000/musics/1
 Content-Type: application/json 
  
 {
@@ -167,26 +167,26 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/musics/1
+DELETE https://localhost:3000/musics/1
 
 ###
-GET http://localhost:3000/upload/image/Maria/1716421408168-alhilal-logo
+GET https://localhost:3000/upload/image/Maria/1716421408168-alhilal-logo
 
 ###
-GET http://localhost:3000/images
+GET https://localhost:3000/images
 ###
-GET http://localhost:3000/images/user/1
+GET https://localhost:3000/images/user/1
 
 ###
-DELETE http://localhost:3000/videos/1
+DELETE https://localhost:3000/videos/1
 
 ###
-GET http://localhost:3000/upload/image/:username/:filename
+GET https://localhost:3000/upload/image/:username/:filename
 ###
-GET http://localhost:3000/download/silva/images/1717109105289-ANNA_JOYCE_755x470.jpg
+GET https://localhost:3000/download/silva/images/1717109105289-ANNA_JOYCE_755x470.jpg
 ###
 // Criticas
-POST http://localhost:3000/criticas/album
+POST https://localhost:3000/criticas/album
 Content-Type: application/json 
  
 {
@@ -197,9 +197,9 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/criticas/album
+GET https://localhost:3000/criticas/album
 ###
-PUT http://localhost:3000/criticas/album/2
+PUT https://localhost:3000/criticas/album/2
 Content-Type: application/json 
  
 {
@@ -207,14 +207,14 @@ Content-Type: application/json
     "pontuacao": 3
 }
 ###
-DELETE http://localhost:3000/criticas/album/3
+DELETE https://localhost:3000/criticas/album/3
 ###
-DELETE http://localhost:3000/criticas/user/1
+DELETE https://localhost:3000/criticas/user/1
 
 ###
 // PlayList Testes
 //Criar
-POST http://localhost:3000/playlists
+POST https://localhost:3000/playlists
 Content-Type: application/json
 
 {
@@ -224,7 +224,7 @@ Content-Type: application/json
 
 ###
 // Adicionar musica
-POST http://localhost:3000/playlists/1/musics
+POST https://localhost:3000/playlists/1/musics
 Content-Type: application/json
 
 {
@@ -234,19 +234,19 @@ Content-Type: application/json
 
 ###
 // Listar musicas da playlist
-GET http://localhost:3000/playlists/1/musics
+GET https://localhost:3000/playlists/1/musics
 
 ###
 // limpar playlist
-DELETE http://localhost:3000/playlists/1/musics
+DELETE https://localhost:3000/playlists/1/musics
 
 ###
 // eliminar playlist
-DELETE http://localhost:3000/playlists/1
+DELETE https://localhost:3000/playlists/1
 
 ###
 // partilha de ficheiros
-POST http://localhost:3000/share
+POST https://localhost:3000/share
 Content-Type: application/json
 
 {
@@ -257,11 +257,11 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/shared/musics/2
+GET https://localhost:3000/shared/musics/2
 
 ###
 //Grupos
-POST http://localhost:3000/grupo
+POST https://localhost:3000/grupo
 Content-Type: application/json
 
 {
@@ -269,19 +269,19 @@ Content-Type: application/json
     "nomeGrupo": "Al Hilal"
 }
 ###
-GET http://localhost:3000/grupo/1
+GET https://localhost:3000/grupo/1
 
 ###
-POST http://localhost:3000/grupo/1/2
+POST https://localhost:3000/grupo/1/2
 
 ###
-POST http://localhost:3000/grupo/pedido/1/3
+POST https://localhost:3000/grupo/pedido/1/3
 
 ###
-PUT http://localhost:3000/grupo/1/3
+PUT https://localhost:3000/grupo/1/3
 
 ###
-DELETE http://localhost:3000/grupo/1
+DELETE https://localhost:3000/grupo/1
 
 ###
-PUT http://localhost:3000/grupo/1/2/owner
+PUT https://localhost:3000/grupo/1/2/owner
