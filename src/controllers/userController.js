@@ -5,17 +5,24 @@ import * as userService from '../services/userServices.js';
 export async function createUser(req, res) {
   try {
     const user = req.body;
+
     // verificar se o username contem apenas espaços em branco  
-    if(user.username.trim().length > 0){
-      // criar user e registar na BD
-      await userService.createUser(user);
-      // criar pastas
-      await userService.createUserDirectories(user.username);
-      res.status(201).send(user);
-    }else{
+    if (user.username.trim().length > 0) {
+      // verificar o email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.(isptec\.co\.ao)$/;
+      if (emailRegex.test(user.email)) {
+        // criar user e registar na BD
+        await userService.createUser(user);
+        // criar pastas
+        await userService.createUserDirectories(user.username);
+        res.status(201).send(user);
+      } else {
+        res.status(400).send({ message: "O email deve pertencer ao domínio do ISPTEC" });
+      }
+    } else {
       res.status(400).send({ message: "O username não pode estar vazio ou conter apenas espaços em branco" });
     }
-    
+
   } catch (error) {
     res.status(500).send({ error: error.message });
   }
@@ -120,20 +127,20 @@ export async function login(request, reply) {
 
 // tornar um user editor
 export async function beEditor(request, reply) {
-  try{
+  try {
     // obter os dados do parametro da requisição
     const id = request.params.id;
     const escolha = request.params.escolha;
     // chamar a função responsável por alterar o estado do campo editor
     const newEditor = await userService.beEditor(id, escolha);
-    if(newEditor){
+    if (newEditor) {
       // se estiver tudo ok, envia o usuário actualizado
       return reply.status(201).send(newEditor);
-    }else{
+    } else {
       // se não estiver tudo ok, envia um erro
       return reply.status(401).send({ message: "Erro ao tentar alterar o estado do Usuário!" });
     }
-  }catch(error){
+  } catch (error) {
     return reply.code(500).send({ message: 'Internal Server Error' });
   }
 }
